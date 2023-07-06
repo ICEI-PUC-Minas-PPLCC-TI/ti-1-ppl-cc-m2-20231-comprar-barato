@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pagina do produto</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <nav class="container header">
+            <div class="row align-items-start">
+                <div class="col-2">
+                    <div class="logo">
+                        <a href="index.html"><img src="img/logo.png" class="logoPagProduto"></a>
+                    </div>
+                </div>
+                <div class="col-10">
+                    <div class="search">
+                        <input type="text" placeholder="Procurar por outro produto...">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <div class="container titulo">
+            <div class="row align-items-start">
+                <div class="col-6">
+                    <h3 id="productTitle"></h3>
+                </div>
+                <div class="col-6">
+                    <a href="#" target="_blank"><img class="logoLoja" id="productLogo" src="" alt="Logo da Loja"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container produto">
+            <div class="row align-items-start">
+                <div class="col-7">
+
+                    <div id="carousel">
+                        <div id="thumbnails"></div>
+                        <div id="image-caption">
+                            <img id="image" />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-5">
+                    <h4>Historico de precos</h4>
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="container precos">
+            <div class="row align-items-start">
+                <div class="col-2" id="preco">
+
+                </div>
+                <div class="col-8">
+                    <h6>Metodos de Pagamento</h6>
+                    <ul class="jss340">
+                        <li><img src="https://static.pichau.com.br/images/visa.png" alt="Visa"></li>
+                        <li><img src="https://static.pichau.com.br/images/mastercard.png" alt="Mastercard"></li>
+                        <li><img src="https://static.pichau.com.br/images/american.png" alt="Amex"></li>
+                    </ul>
+                    <ul class="jss340-2">
+                        <li><img src="https://static.pichau.com.br/images/boleto.png" alt="Boleto"></li>
+                        <li class="li2"><img src="https://static.pichau.com.br/images/pix.png" alt="PIX"></li>
+                        <li><img src="https://static.pichau.com.br/images/nubank.svg" height="40" alt="Nubank"></li>
+                    </ul>
+                </div>
+                <div class="col-2" id="loja"></div>
+            </div>
+        </div>
+
+        <h5>INFORMAÇÕES ADICIONAIS</h5>
+
+        <div id="tabela">
+
+        </div>
+
+    </main>
+
+    <footer>
+        <h3 class="tituloFooter">Sobre Nós</h3>
+        <p class="sobre">Somos um site de busca de promoções especializado em produtos eletrônicos. Encontre as melhores ofertas em
+          celulares, notebooks, TVs e muito mais. Com nossas recomendações baseadas nas melhores promoções do momento, você
+          economiza sem abrir mão da qualidade.</p>
+        <p><span>&copy;</span> Todos os direitos reservados - Andre Luis - Pagar barato - TIAW - PUCMG</p>
+      </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+
+    <script>
+
+        var jsonData = [
+            {
+                "id": 1,
+                "categoria": "placa de video",
+                "titulo": "PLACA DE VIDEO GIGABYTE GEFORCE RTX 3070 GAMING OC, LHR, 8GB, GDDR6, 256-BIT, GV-N3070GAMING OC-8GD REV 2.0",
+                "preco-a-vista": "R$3.599,00",
+                "preco-cartao": "4.234,12",
+                "link": "https://www.pichau.com.br/?gclid=CjwKCAjwx_eiBhBGEiwA15gLN5IR54tMmvqK9lEQj3qHO9IANW3M7iAyzXRLJeu_BCOXQFmOKDhHqRoCTxEQAvD_BwE",
+                "logo": "img/logoPichau_black.png",
+                "descricao": [
+                    {
+                        "marca": "Gigabyte",
+                        "modelo": "GV-N3070GAMING OC-8GD REV 2.0",
+                        "GPU": "GeForce RTX™ 3070",
+                        "clock": "1815 MHz",
+                        "nucleos": "5888",
+                        "clockDeMemoria": "14000 MHz",
+                        "memoria": "8 GB",
+                        "tipo": "GDDR6",
+                        "interfaceMemoria": "256 bit",
+                        "larguraBanda": "448 GB/s",
+                        "interface": "PCI-E 4.0 x 16",
+                        "resolucaoMaxima": "7680x4320",
+                        "visualizacaoMultipla": "4",
+                        "directX": "12 Ultimate",
+                        "openGl": "4.6",
+                        "entradas": "2 x DisplayPort 1.4a <br> 2 x HDMI 2.1",
+                        "conectores": "1 x 8 Pinos <br> 1 x 6 Pinos",
+                        "dimensao": "286 x 115 x 51 mm"
+                    }
+                ]
+            }
+        ];
+
+        var product = jsonData[0];
+        var precoAVista = product["preco-a-vista"];
+        var precoCartao = product["preco-cartao"];
+        var titulo = product.titulo;
+        var link = product.link;
+        var logo = product.logo;
+
+        var productTitle = document.getElementById("productTitle");
+        productTitle.textContent = titulo;
+
+        var productLogo = document.getElementById("productLogo");
+        productLogo.src = logo;
+        productLogo.parentNode.href = link;
+
+        document.getElementById('preco').innerHTML = `<div class="jss264">
+                        <div class="">
+                            <div class="jss289">
+                                <div class="jss286 jss287"><i class="fa fa-money"
+                                        style="font-size:36px;color: green;"></i></div>
+                                <div class="jss284">
+                                    <div class="jss281">de <s>R$&nbsp;5.812,16</s> <!-- -->por:</div><span
+                                        class="jss271 jss297">à vista</span>
+                                    <div class="jss272">R$${product["preco-a-vista"]}</div><span class="jss273 jss297">no PIX com
+                                        15% desconto</span>
+                                </div>
+                            </div>
+                            <div class="jss274"></div>
+                            <div class="jss289">
+                                <div class="jss286 jss288"><i class="fa fa-credit-card"
+                                        style="font-size:36px;color: red;"></i></div>
+                                <div class="jss298">
+                                    <div class="jss299">R$&nbsp;${product["preco-cartao"]}</div><span class="jss301 jss302">em até 12x
+                                        de<span class="jss303"> R$&nbsp;352,84</span></span>
+                                    <div class="jss301 jss302">sem juros no cartão</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`
+
+        document.getElementById('loja').innerHTML = `<a href="${product.link}" target="_blank"><button class="btnLoja">Ir para a Loja</button></a>`
+
+        // tabela
+        var product = jsonData[0].descricao[0];
+
+        var tableHTML = `
+  <table>
+    <thead>
+      <tr>
+        <th>Informações do produto</th>
+        <th>Descrição</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Marca</td>
+        <td>${product.marca}</td>
+      </tr>
+      <tr>
+        <td>Modelo</td>
+        <td>${product.modelo}</td>
+      </tr>
+      <tr>
+        <td>GPU</td>
+        <td>${product.GPU}</td>
+      </tr>
+      <tr>
+        <td>Clock</td>
+        <td>${product.clock}</td>
+      </tr>
+      <tr>
+        <td>Núcleos CUDA</td>
+        <td>${product.nucleos}</td>
+      </tr>
+      <tr>
+        <td>Clock de memória</td>
+        <td>${product.clockDeMemoria}</td>
+      </tr>
+      <tr>
+        <td>Memória</td>
+        <td>${product.memoria}</td>
+      </tr>
+      <tr>
+        <td>Tipo</td>
+        <td>${product.tipo}</td>
+      </tr>
+      <tr>
+        <td>Interface de memória</td>
+        <td>${product.interfaceMemoria}</td>
+      </tr>
+      <tr>
+        <td>Largura de Banda</td>
+        <td>${product.larguraBanda}</td>
+      </tr>
+      <tr>
+        <td>Interface</td>
+        <td>${product.interface}</td>
+      </tr>
+      <tr>
+        <td>Resolução Máxima</td>
+        <td>${product.resolucaoMaxima}</td>
+      </tr>
+      <tr>
+        <td>Visualização Multipla</td>
+        <td>${product.visualizacaoMultipla}</td>
+      </tr>
+      <tr>
+        <td>DirectX</td>
+        <td>${product.directX}</td>
+      </tr>
+      <tr>
+        <td>OpenGL</td>
+        <td>${product.openGl}</td>
+      </tr>
+      <tr>
+        <td>Entradas</td>
+        <td>${product.entradas}</td>
+      </tr>
+      <tr>
+        <td>Conectores</td>
+        <td>${product.conectores}</td>
+      </tr>
+      <tr>
+        <td>Dimensões</td>
+        <td>${product.dimensao}</td>
+      </tr>
+    </tbody>
+  </table>
+`;
+
+        var targetElement = document.getElementById('tabela');
+        targetElement.innerHTML = tableHTML;
+    </script>
+
+    <script>
+        // Obtém a data atual
+        var today = moment();
+
+        // Cria um array com os seis últimos meses, incluindo o mês atual
+        var labels = [];
+        for (var i = 5; i >= 0; i--) {
+            labels.push(today.clone().subtract(i, 'months').format('MMM'));
+        }
+
+        // Cria um array com os dados de preços dos últimos seis meses
+        var data = [3201.65, 2660.35, 2660.35, 3599.00, 3599.00, 4234.12];
+
+        // Cria o gráfico
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Preço',
+                    data: data,
+                    borderColor: '#00C59D',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
+    <script>
+        // JavaScript
+        const carouselElement = document.getElementById('carousel');
+        const imageElement = document.getElementById('image');
+        const captionElement = document.getElementById('caption');
+        const thumbnailsElement = document.getElementById('thumbnails');
+        const images = []; // array que irá armazenar as imagens
+
+        // fazendo a requisição AJAX para o arquivo JSON
+        const request = new XMLHttpRequest();
+        request.open('GET', 'app.js');
+        request.onload = function () {
+            if (request.status === 200) {
+                const data = JSON.parse(request.responseText);
+                for (let i = 0; i < data.length; i++) {
+                    // cria um objeto imagem com o caminho e a legenda
+                    const image = {
+                        src: data[i].src,
+                        caption: data[i].caption || ''
+                    };
+                    images.push(image); // adiciona a imagem no array
+                    createThumbnail(image); // cria o thumbnail da imagem
+                }
+                showImage(0); // exibe a primeira imagem
+            } else {
+                console.error('Erro ao carregar o arquivo JSON');
+            }
+        };
+        request.send();
+
+        function createThumbnail(image) {
+            const thumbnail = document.createElement('img');
+            thumbnail.src = image.src;
+            thumbnail.alt = image.caption;
+            thumbnail.classList.add('thumbnail');
+            thumbnail.addEventListener('click', function () {
+                const index = images.findIndex((img) => img.src === image.src);
+                showImage(index);
+            });
+            thumbnailsElement.appendChild(thumbnail);
+        }
+
+        function showImage(index) {
+            const image = images[index];
+            imageElement.src = image.src;
+            captionElement.innerText = image.caption;
+            // destaca o thumbnail da imagem atual
+            const thumbnails = thumbnailsElement.querySelectorAll('.thumbnail');
+            thumbnails.forEach((thumbnail) => {
+                thumbnail.style.borderColor = 'white';
+            });
+            const currentThumbnail = thumbnails[index];
+            currentThumbnail.style.borderColor = 'rgba(255, 255, 255, 0.5)';
+        }
+
+    </script>
+</body>
+
+</html>
